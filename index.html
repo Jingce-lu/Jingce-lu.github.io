@@ -1,1 +1,274 @@
-<!DOCTYPE html><html><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>myvip</title><link href=/static/css/app.96d0ea81de421389138d95d99520e98f.css rel=stylesheet></head><body><div id=app></div><script type=text/javascript src=/static/js/manifest.2ae2e69a05c33dfc65f8.js></script><script type=text/javascript src=/static/js/vendor.0df1cb4245bb239a2b7e.js></script><script type=text/javascript src=/static/js/app.b8db7f2b17f10936a524.js></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>study clock</title>
+    <style>
+        body{
+            background: #0d1320;
+            overflow: hidden;
+        }
+        #timer{
+            text-align: center;
+            font-size:30vh;
+            font-weight: bold;
+            line-height: 35vh;
+            color:#e2ecfd;
+        }
+        #date{
+            margin-top:15vh;
+            text-align: center;
+            font-size:6vh;
+            font-weight: bold;
+            color:#e2ecfd;
+        }
+
+        .zym {
+            text-align: center;
+            font-size:6vh;
+            font-weight: bold;
+            color:#e2ecfd;
+        }
+
+        .stars {
+            color: rgba(252, 194, 88, 0.5); 
+            transform-origin: 100% 0;
+            animation: star2 4s linear infinite;
+            -webkit-animation: star2 5s linear infinite;
+            opacity: 0.6;
+            z-index: -1;
+        }
+
+        .star {
+            display: block;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: #fff;
+            top: 100px;
+            left: 500px;
+            position: relative;
+            transform-origin: 100% 0;
+            animation: star-ani 4s linear infinite;
+            -webkit-animation: star-ani 5s linear infinite;
+            box-shadow: 0 0 5px 5px rgba(255, 255, 255, 0.3);
+            opacity: 0;
+            z-index: -1;
+        }
+        .star:after {
+            content: "";
+            display: block;
+            top: 0px;
+            left: 4px;
+            border: 0px solid #fff;
+            border-width: 0px 90px 2px 90px;
+            border-color: transparent transparent transparent rgba(255, 255, 255, 0.3);
+            transform: rotate(-45deg) translate3d(1px, 3px, 0);
+            box-shadow: 0 0 1px 0 rgba(255, 255, 255, 0.1);
+            transform-origin: 0% 100%;
+        }
+        .pink {
+            top: 100px;
+            left: 800px;
+            background: #fff;
+            animation-delay: 3s;
+            -webkit-animation-delay: 3s;
+            -moz-animation-delay: 3s;
+        }
+        .pink:after {
+            border-color: transparent transparent transparent #fff;
+            animation-delay: 3s;
+            -webkit-animation-delay: 3s;
+            -moz-animation-delay: 3s;
+        }
+        .blue {
+            top: 120px;
+            left: 1200px;
+            background: fff;
+            animation-delay: 7s;
+            -webkit-animation-delay: 7s;
+            -moz-animation-delay: 7s;
+        }
+        .blue:after {
+            border-color: transparent transparent transparent fff;
+            -webkit-animation-delay: 7s;
+            -moz-animation-delay: 7s;
+            animation-delay: 7s;
+        }
+        @keyframes star2 {
+            0% {
+                opacity: 0.6;
+                transform: scale(0) translate3d(0, 0, 0);
+            }
+            20% {
+                opacity: 0.8;
+                transform: scale(0.2) translate3d(-100px, 100px, 0);
+            }
+            40% {
+                opacity: 0.8;
+                transform: scale(0.4) translate3d(-200px, 200px, 0);
+            }
+            60% {
+                opacity: 0.8;
+                transform: scale(0.6) translate3d(-300px, 300px, 0);
+            }
+            80% {
+                opacity: 1;
+                transform: scale(1) translate3d(-350px, 350px, 0);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1.2) translate3d(-400px, 380px, 0);
+            }
+        }
+        @keyframes star-ani {
+            0% {
+                opacity: 0;
+                transform: scale(0) translate3d(0, 0, 0);
+            }
+            20% {
+                opacity: 0.8;
+                transform: scale(0.2) translate3d(-100px, 100px, 0);
+            }
+            40% {
+                opacity: 0.8;
+                transform: scale(0.4) translate3d(-200px, 200px, 0);
+            }
+            60% {
+                opacity: 0.8;
+                transform: scale(0.6) translate3d(-300px, 300px, 0);
+            }
+            80% {
+                opacity: 1;
+                transform: scale(1) translate3d(-400px, 400px, 0);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1.2) translate3d(-550px, 550px, 0);
+            }
+        }
+        .shine {
+            background-image: url("/static/img/star.png");
+            background-repeat: no-repeat;
+            background-position: center;
+            width: 155px;
+            height: 155px;
+            position: absolute;
+            animation: opacity-change 1s ease-in-out infinite;
+            -webkit-animation: opacity-change 1s ease-in-out infinite;
+            -moz-animation: opacity-change 1s ease-in-out infinite;
+            -o-animation: opacity-change 1s ease-in-out infinite;
+        }
+
+        .shine2 {
+            animation: opacity-change 1.75s ease-in-out infinite;
+            -webkit-animation: opacity-change 1.75s ease-in-out infinite;
+            -moz-animation: opacity-change 1.75s ease-in-out infinite;
+            -o-animation: opacity-change 1.75s ease-in-out infinite;
+        }
+
+        @keyframes opacity-change {
+            0% {
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+
+        @-webkit-keyframes opacity-change {
+            0% {
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+
+        @-moz-keyframes opacity-change {
+            0% {
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+
+        @-o-keyframes opacity-change {
+            0% {
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div>
+        <div class="shine shine2"></div>
+        <div class="star"></div>
+        <div class="star pink"></div>
+        <div class="star blue"></div>
+    </div>
+    <div id="date">00月00日</div>
+    <div id="timer">06:12</div>
+    <div class="zym"><span class="stars">✨</span> 越努力，越幸运！ 勤奋的让自己感动！<span class="stars">✨</span></div>
+
+    <script>
+        let showSymbl = true
+        function clock(){
+            let now = new Date()
+            let year = now.getFullYear()+ ''
+            let hour = now.getHours()+''
+            let minute = now.getMinutes() + ''
+            let ss = now.getSeconds() < 10 ? '0' + now.getSeconds():now.getSeconds()+ ''
+            let month = (now.getMonth()+1)+''
+            let day = now.getDate()+''
+            let weeks = new Array("星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六");
+            let days = now.getDay();
+            let week = weeks[days];
+            if(showSymbl){
+                document.getElementById('timer').innerHTML = `${hour.padStart(2,'0')}<span>:</span>${minute.padStart(2,'0')}<span style="font-size: 12vh; line-height: 1">:${ss}</span>`
+
+            }else{
+                document.getElementById('timer').innerHTML = `${hour.padStart(2,'0')}<span style="color:#0d1320">:</span>${minute.padStart(2,'0')}<span style="font-size: 12vh; line-height: 1">:${ss}</span>`
+            }
+            document.getElementById('date').innerHTML = `${year}年${month.padStart(2,'0')}月${day.padStart(2,'0')}日 ${week}`
+
+            // showSymbl = !showSymbl
+        }
+        clock()
+        setInterval(()=>{
+            clock()
+        },1000)
+    </script>
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?e946fec3575e5386eff8ce2d10831ca9";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+</body>
+</html>
